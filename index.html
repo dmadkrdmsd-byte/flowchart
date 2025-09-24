@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro 플로우 차트 생성기 (v2.3)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Pro Flowchart Maker v2.3</h1>
+            <div class="header-actions">
+                <button id="save-btn" class="btn">💾 저장</button>
+                <button id="load-btn" class="btn">📂 불러오기</button>
+                <input type="file" id="file-input" style="display: none;" accept=".json">
+                <button id="generate-prompt" class="btn btn-convert">📜 프롬프트 생성</button>
+            </div>
+        </header>
+        
+        <aside class="sidebar" id="left-sidebar">
+            <div class="sidebar-header">
+                <h3>도형</h3>
+                <button id="toggle-left-sidebar" class="toggle-btn">◀</button>
+            </div>
+            <div class="palette-section">
+                <h4 class="palette-title">순서도</h4>
+                <div class="palette-content">
+                    <button class="shape-btn" id="add-start">시작</button>
+                    <button class="shape-btn" id="add-end">종료</button>
+                    <button class="shape-btn" id="add-process">처리</button>
+                    <button class="shape-btn" id="add-decision">조건</button>
+                    <button class="shape-btn" id="add-data">데이터</button>
+                </div>
+            </div>
+             <div class="instructions">
+                <strong>사용법:</strong><br>
+                - <strong>연결점 클릭</strong>: 블록 연결 시작/종료<br>
+                - <strong>더블클릭</strong>: 텍스트 편집<br>
+                - <strong>우클릭</strong>: 빠른 메뉴 (색상/삭제)
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="canvas-wrapper">
+                <canvas id="flowchart-canvas" width="2000" height="1500"></canvas>
+            </div>
+        </main>
+
+        <aside class="format-panel" id="right-sidebar">
+            <div class="sidebar-header">
+                <h3>서식</h3>
+                 <button id="toggle-right-sidebar" class="toggle-btn">▶</button>
+            </div>
+            <div id="format-content">
+                <p class="placeholder-text">블록이나 선을 선택하여 속성을 편집하세요.</p>
+            </div>
+        </aside>
+        
+        <footer class="app-footer">
+             <button id="clear-canvas" class="btn btn-clear">캔버스 초기화</button>
+        </footer>
+    </div>
+
+    <textarea id="text-editor"></textarea>
+    
+    <div id="context-menu" class="context-menu">
+        <div class="context-menu-item" id="ctx-change-color">색상 변경</div>
+        <div id="ctx-color-palette" class="color-palette">
+            </div>
+        <div class="context-menu-item" id="ctx-delete">삭제</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
